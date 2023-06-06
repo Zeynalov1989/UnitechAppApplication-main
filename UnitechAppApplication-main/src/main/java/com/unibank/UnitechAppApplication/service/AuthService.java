@@ -27,7 +27,7 @@ public class AuthService {
     public RegisterSuccessResponse registerUser(AuthorRequest authorRequest) throws Exception {
         // Check if a user with the given PIN already exists
         if (userRepository.findByPin(authorRequest.getPin()).isPresent()) {
-            throw new Exception("User with the provided PIN already exists");
+            throw new BadRequestException("User with the provided PIN already exists");
         }
 
         // Create a new User entity
